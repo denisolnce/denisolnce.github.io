@@ -1,18 +1,59 @@
-name: Jekyll site CI
+name: Build and deploy
+
+# The old workflow built inside `jekyll/builder:latest` — an abandoned image.
+# That unpinned-image pattern is exactly what broke local dev (image rolled to
+# Ruby 4.0, Jekyll 3.9 could not load `csv`). Build from our own Gemfile.lock
+# instead, so CI, local dev and production all run the same Jekyll.
 
 on:
+  push:
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          # Keep in step with the image in docker-compose.yml.
+          ruby-version: "3.4"
+          bundler-cache: true
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --trace
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  # Deploys only from master; pull requests run the build job as a check.
+  deploy:
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

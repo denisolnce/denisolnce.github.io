@@ -1,19 +1,111 @@
+// Tokens are brought in unprefixed, so $spacing-unit etc. read as before.
+@use "variables" as *;
+
 @media print {
+    // The resume currently lands at exactly two A4 pages with very little slack —
+    // adding roughly 20px of content tips a single orphan line onto a third page.
+    // Every margin and leading value in this block is load-bearing. After editing
+    // content, re-measure: render with chromium --print-to-pdf and count
+    // occurrences of "/Type /Page". Do not loosen these on appearance alone.
     @page {
         size: A4;
-        margin: 1cm 0.5cm;
+        margin: 0.5cm 0.5cm;
     }
 
     @page :first {
-        margin-top: 0.5cm;
+        margin-top: 0.4cm;
     }
 
     body {
         padding: 0 !important;
     }
 
+    .wrapper {
+        padding: 4px !important;
+    }
+
+    .section-title {
+        margin-bottom: 2px !important;
+    }
+
+    // The outcome bullets are the densest block on the page; a slightly tighter
+    // leading here is what keeps a single orphan line off a third page.
+    .markdown ul {
+        margin-bottom: 2px !important;
+        padding-inline-start: 15px !important;
+    }
+
+    .markdown li {
+        line-height: 1.3 !important;
+    }
+
+    // Six experience entries each pay 8px of lead-in above the company name.
+    // Trimming that is the least visible way to reclaim a block of height.
+    .upper-row .company {
+        margin-top: 3px !important;
+    }
+
+    .upper-row {
+        margin-bottom: 0 !important;
+    }
+
+    .languages ul,
+    .interests ul {
+        margin-bottom: 0 !important;
+    }
+
+    // Life sits in the wide column of the last row with six single-line items.
+    // Flowing it into two columns reclaims three lines — enough to keep the
+    // final section off a third page without cutting any content.
+    .interests ul {
+        column-count: 2;
+        column-gap: $spacing-unit * 0.5;
+    }
+
+    .interests ul li {
+        break-inside: avoid;
+    }
+
+    // A4 minus side margins is ~756px, which is under Bootstrap's 768px `md`
+    // breakpoint — so col-md-* never applies when printing and every .row
+    // stacks, wasting a full column of height. Force the intended two-column
+    // layout for print explicitly.
+    .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .col-md-8 {
+        flex: 0 0 66.6666% !important;
+        max-width: 66.6666% !important;
+    }
+
+    .col-md-4 {
+        flex: 0 0 33.3333% !important;
+        max-width: 33.3333% !important;
+    }
+
     a:after {
         content: '' !important;
+    }
+
+    // Screen shows contact links as bare icons. A PDF cannot afford that: the
+    // .sr-only values never reach Chrome's PDF text layer, so an exported
+    // icon-only header carries no machine-readable email or phone and an ATS
+    // finds nothing. Restore the values (verified with pdftotext).
+    // To go icon-only in the PDF too, delete this block.
+    .contact ul {
+        gap: 0 $spacing-unit * 0.4;
+
+        .contact-value {
+            display: inline !important;
+            margin-left: 0.3em;
+        }
+
+        li.icon-link a {
+            font-size: inherit !important;
+            color: $text-color !important;
+        }
     }
 
     .wrapper {
@@ -21,6 +113,15 @@
 
         .avatar img {
             max-width: 100px !important;
+        }
+
+        .skills {
+            break-inside: avoid;
+            page-break-inside: avoid;
+
+            .skill-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
     }
 

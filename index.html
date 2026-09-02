@@ -12,6 +12,15 @@ layout: default
     <div class="col-md-8 col-divider">{% include education.html %}</div>
     <div class="col-md-4">{% include certificates.html %}</div>
   </div>
-   {% include projects.html %} {% include language.html %} {% include interests.html %}
+  {% include projects.html %}
+  {%- comment -%}
+    Interests and Languages sit side by side, mirroring the education/certificates
+    row above. Stacked they cost ~266px of print height; paired they cost ~162px,
+    which is what keeps the PDF at two pages instead of spilling to three.
+  {%- endcomment -%}
+  <div class="row">
+    <div class="col-md-8 col-divider">{% include interests.html %}</div>
+    <div class="col-md-4">{% include language.html %}</div>
+  </div>
 </div>
 {% include footer.html %} {% else %} {% include close.html %} {% endif %}

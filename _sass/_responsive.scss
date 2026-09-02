@@ -1,3 +1,6 @@
+// Tokens are brought in unprefixed, so $spacing-unit etc. read as before.
+@use "variables" as *;
+
 /* Extra small devices (phones, less than 768px) */
 @media only screen and (max-width: 767px) {
     body {
@@ -5,21 +8,18 @@
     }
 
     .wrapper {
-        padding: $spacing-unit / 2;
+        padding: $spacing-unit * 0.5;
 
         section {
             .upper-row {
                 margin-bottom: 0;
 
-                .skillez {
-                    max-width: 80ch;
-                }
                 .time,
                 .location,
                 .degree {
                     position: static;
                     display: block;
-                    margin-top: $spacing-unit / 4;
+                    margin-top: $spacing-unit * 0.25;
                 }
             }
         }
@@ -29,26 +29,31 @@
                 float: none;
                 display: block;
                 margin: $spacing-unit auto;
-                border-radius: 100%;
+                // border-radius now lives in _base.scss — circular everywhere.
             }
 
             .header {
                 text-align: center;
 
+                // Icon-only links stay on one wrapping row, centered with the
+                // rest of the mobile header. Stacking them would produce a
+                // column of bare glyphs.
                 .contact ul {
-                    li {
-                        display: block;
-                        text-align: left;
+                    justify-content: center;
 
-                        &:not(:last-child)::after {
-                            content: '';
-                        }
+                    li {
+                        text-align: left;
                     }
                 }
             }
         }
 
         .skills {
+            .skill-grid {
+                grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+                gap: $spacing-unit * 0.25;
+            }
+
             .bar {
                 max-width: 100%;
                 --labels-size: 30%;

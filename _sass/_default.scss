@@ -1,29 +1,11 @@
-// Define defaults for each variable.
-$base-font-family: "HelveticaNeu", sans-serif !default;
-$base-font-size: 13px !default;
-$base-font-weight: 400 !default;
+// Aggregate entry point.
+//
+// @forward re-exports the tokens so the entry stylesheet can configure them
+// through this module. @use then pulls in each partial; CSS is emitted in the
+// order the partials are loaded, matching the old @import order.
 
-$small-font-size: $base-font-size * 0.875 !default; // 14px
-$middle-font-size: $base-font-size * 1.125 !default; // 18px
-$large-font-size: $base-font-size * 1.25 !default; // 20px
-$subhuge-font-size: $base-font-size * 1.5 !default; // 25px
-$huge-font-size: $base-font-size * 2 !default; // 32px
+@forward "variables";
 
-$base-line-height: 1.5 !default;
-
-$spacing-unit: 20px !default;
-
-// Width of the content area
-$content-width: 1000px !default;
-
-// Default color settings
-$text-color: #333333;
-$text-second-color: #3f4650;
-$text-third-color: #97aac3;
-$background-color: #55534d;
-$wrapper-color: #fffbf0;
-$heart-color: #fb866a;
-$item-divider-color: #b6cacf;
-$job-title-color: #7b993b;
-
-@import "base", "responsive", "print";
+@use "base";
+@use "responsive";
+@use "print";

@@ -1,28 +1,35 @@
 {% assign skills = data.skills %}
 {% if skills and skills.display %}
 <section class="skills">
-    <div class="section-title">
+    <h2 class="section-title">
         {{ skills.title }}
-    </div>
+    </h2>
 
     <div class="section-content">
-        {% for skill_group in skills.items %}
-        <div class="item">
-            <div class="upper-row">
-                <div class="university">{{ skill_group.name }}</div>
-                <div class="skillez">            
-                    {%- for skill in skill_group.skills -%}
-                        {{ skill }}{%- unless forloop.last %}, {% endunless %}
-                    {%- endfor %}
-                </div>
+        <div class="skill-grid">
+            {% for skill_group in skills.items %}
+            <div class="skill-group">
+                {%- comment -%}
+                  escape: group names contain "&" (Cloud & IaC), which must be
+                  emitted as &amp; — Liquid does not escape by default.
+                {%- endcomment -%}
+                <div class="skill-group-name">{{ skill_group.name | escape }}</div>
+                <ul class="skill-list">
+                    {% for skill in skill_group.skills %}
+                    <li>{{ skill | escape }}</li>
+                    {% endfor %}
+                </ul>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-  <!--       <div class="details">
+
+        {% if skills.details %}
+        <div class="details">
             <div class="markdown">
                 {{ skills.details | markdownify }}
             </div>
-        </div> -->
+        </div>
+        {% endif %}
 
         {% if skills.levels and skills.levels[0].name %}
         <div class="levels">

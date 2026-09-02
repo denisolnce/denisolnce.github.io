@@ -1,128 +1,108 @@
 {% assign contact = data.contact %}
-<ul class="list-unstyled">
-  {% if contact.location %}
+{%- comment -%}
+  Link rows render as icon only on screen. The value sits in .contact-value,
+  which is display:none on screen and restored in print — because .sr-only text
+  never reaches Chrome's PDF text layer, so an icon-only PDF would carry no
+  machine-readable email or phone for an ATS to find. Verified by extracting
+  text from the generated PDF.
+{%- endcomment -%}
+<ul class="list-unstyled contact-list">
+  {% if contact.location and contact.location != "" %}
   <li class="location">
-    <i class="fa-solid fa-location-dot"></i>
-    <span>{{ contact.location }}</span>
+    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+    <span class="sr-only">Location: </span>
+    <span class="contact-text">{{ contact.location }}</span>
   </li>
-  {% endif %} {% if contact.email %}
-  <li class="email">
-    <i class="fa-solid fa-envelope"></i>
-    <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+  {% endif %}
+
+  {% if contact.email and contact.email != "" %}
+  <li class="email icon-link">
+    <a href="mailto:{{ contact.email }}" title="Email: {{ contact.email }}">
+      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      <span class="sr-only">Email: </span><span class="contact-value">{{ contact.email }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.phone %}
-  <li class="phone">
-    <i class="fa-solid fa-phone"></i>
-    <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+  {% endif %}
+
+  {% if contact.phone and contact.phone != "" %}
+  <li class="phone icon-link">
+    <a href="tel:{{ contact.phone }}" title="Phone: {{ contact.phone }}">
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
+      <span class="sr-only">Phone: </span><span class="contact-value">{{ contact.phone }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.website %}
-  <li class="website">
-    <i class="fa-solid fa-globe"></i>
-    <a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>
+  {% endif %}
+
+  {% if contact.website and contact.website != "" %}
+  {%- assign website_label = contact.website | remove_first: "https://" | remove_first: "http://" -%}
+  <li class="website icon-link">
+    <a href="{{ contact.website }}" target="_blank" rel="noopener noreferrer" title="Website: {{ website_label }}">
+      <i class="fa-solid fa-globe" aria-hidden="true"></i>
+      <span class="sr-only">Website: </span><span class="contact-value">{{ website_label }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.wechat %}
-  <li class="wechat">
-    <i class="fa-brands fa-weixin"></i>
-    <span>{{ contact.wechat }}</span>
+  {% endif %}
+
+  {% if contact.linkedin and contact.linkedin != "" %}
+  <li class="linkedin icon-link">
+    <a href="https://linkedin.com/in/{{ contact.linkedin }}" target="_blank" rel="noopener noreferrer" title="LinkedIn: {{ contact.linkedin }}">
+      <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+      <span class="sr-only">LinkedIn: </span><span class="contact-value">linkedin.com/in/{{ contact.linkedin }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.whatsapp %}
-  <li class="whatsapp">
-    <i class="fa-brands fa-whatsapp"></i>
-    <a href="https://wa.me/{{ contact.whatsapp }}" target="_blank"
-      >{{ contact.whatsapp }}</a
-    >
+  {% endif %}
+
+  {% if contact.github and contact.github != "" %}
+  <li class="github icon-link">
+    <a href="https://github.com/{{ contact.github }}" target="_blank" rel="noopener noreferrer" title="GitHub: {{ contact.github }}">
+      <i class="fa-brands fa-github" aria-hidden="true"></i>
+      <span class="sr-only">GitHub: </span><span class="contact-value">github.com/{{ contact.github }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.telegram %}
-  <li class="telegram">
-    <i class="fa-brands fa-telegram"></i>
-    <a href="https://t.me/{{ contact.telegram }}" target="_blank"
-      >{{ contact.telegram }}</a
-    >
+  {% endif %}
+
+  {% if contact.telegram and contact.telegram != "" %}
+  <li class="telegram icon-link">
+    <a href="https://t.me/{{ contact.telegram }}" target="_blank" rel="noopener noreferrer" title="Telegram: @{{ contact.telegram }}">
+      <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+      <span class="sr-only">Telegram: </span><span class="contact-value">@{{ contact.telegram }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.github %}
-  <li class="github">
-    <i class="fa-brands fa-github"></i>
-    <a href="https://github.com/{{ contact.github }}" target="_blank"
-      >{{ contact.github }}</a
-    >
+  {% endif %}
+
+  {% if contact.whatsapp and contact.whatsapp != "" %}
+  <li class="whatsapp icon-link">
+    <a href="https://wa.me/{{ contact.whatsapp }}" target="_blank" rel="noopener noreferrer" title="WhatsApp: {{ contact.whatsapp }}">
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+      <span class="sr-only">WhatsApp: </span><span class="contact-value">{{ contact.whatsapp }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.gitlab %}
-  <li class="gitlab">
-    <i class="fa-brands fa-gitlab"></i>
-    <a href="https://gitlab.com/{{ contact.gitlab }}" target="_blank"
-      >{{ contact.gitlab }}</a
-    >
+  {% endif %}
+
+  {% if contact.gitlab and contact.gitlab != "" %}
+  <li class="gitlab icon-link">
+    <a href="https://gitlab.com/{{ contact.gitlab }}" target="_blank" rel="noopener noreferrer" title="GitLab: {{ contact.gitlab }}">
+      <i class="fa-brands fa-gitlab" aria-hidden="true"></i>
+      <span class="sr-only">GitLab: </span><span class="contact-value">gitlab.com/{{ contact.gitlab }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.bitbucket %}
-  <li class="bitbucket">
-    <i class="fa-brands fa-bitbucket"></i>
-    <a href="https://bitbucket.com/{{ contact.bitbucket }}" target="_blank"
-      >{{ contact.bitbucket }}</a
-    >
+  {% endif %}
+
+  {% if contact.twitter and contact.twitter != "" %}
+  <li class="twitter icon-link">
+    <a href="https://twitter.com/{{ contact.twitter }}" target="_blank" rel="noopener noreferrer" title="Twitter: @{{ contact.twitter }}">
+      <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+      <span class="sr-only">Twitter: </span><span class="contact-value">@{{ contact.twitter }}</span>
+    </a>
   </li>
-  {% endif %} {% if contact.googlescholar %}
-  <li class="google-scholar">
-    <i class="ai ai-google-scholar"></i>
-    <a
-      href="https://scholar.google.com/citations?user={{ contact.googlescholar }}"
-      target="_blank"
-      >{{ contact.googlescholar }}</a
-    >
-  </li>
-  {% endif %} {% if contact.researchgate %}
-  <li class="researchgate">
-    <i class="fa-brands fa-researchgate"></i>
-    <a
-      href="https://www.researchgate.net/profile/{{ contact.researchgate }}"
-      target="_blank"
-      >{{ contact.researchgate }}</a
-    >
-  </li>
-  {% endif %} {% if contact.linkedin %}
-  <li class="linkedin">
-    <i class="fa-brands fa-linkedin"></i>
-    <a href="https://linkedin.com/in/{{ contact.linkedin }}" target="_blank"
-      >{{ contact.linkedin }}</a
-    >
-  </li>
-  {% endif %} {% if contact.medium %}
-  <li class="medium">
-    <i class="fa-brands fa-medium"></i>
-    <a href="https://medium.com/@{{ contact.medium }}" target="_blank"
-      >{{ contact.medium }}</a
-    >
-  </li>
-  {% endif %} {% if contact.twitter %}
-  <li class="twitter">
-    <i class="fa-brands fa-twitter"></i>
-    <a href="https://twitter.com/{{ contact.twitter }}" target="_blank"
-      >{{ contact.twitter }}</a
-    >
-  </li>
-  {% endif %} {% if contact.stackoverflow %}
-  <li class="stackoverflow">
-    <i class="fa-brands fa-stack-overflow"></i>
-    <a
-      href="https://stackoverflow.com/users/{{ contact.stackoverflow }}"
-      target="_blank"
-      >{{ contact.stackoverflow }}</a
-    >
-  </li>
-  {% endif %} {% if contact.quora %}
-  <li class="quora">
-    <i class="fa-brands fa-quora"></i>
-    <a href="https://www.quora.com/profile/{{ contact.quora }}" target="_blank"
-      >{{ contact.quora }}</a
-    >
-  </li>
-  {% endif %} {% if contact.goodreads %}
-  <li class="goodreads">
-    <i class="fa-brands fa-goodreads"></i>
-    <a
-      href="https://www.goodreads.com/user/show/{{ contact.goodreads }}"
-      target="_blank"
-      >{{ contact.goodreads }}</a
-    >
+  {% endif %}
+
+  {% if contact.stackoverflow and contact.stackoverflow != "" %}
+  <li class="stackoverflow icon-link">
+    <a href="https://stackoverflow.com/users/{{ contact.stackoverflow }}" target="_blank" rel="noopener noreferrer" title="Stack Overflow">
+      <i class="fa-brands fa-stack-overflow" aria-hidden="true"></i>
+      <span class="sr-only">Stack Overflow: </span><span class="contact-value">{{ contact.stackoverflow }}</span>
+    </a>
   </li>
   {% endif %}
 </ul>

@@ -1,9 +1,9 @@
 {% assign education = data.education %}
 {% if education and education.display %}
 <section class="educations">
-    <div class="section-title">
+    <h2 class="section-title">
         {{ education.title }}
-    </div>
+    </h2>
 
     <div class="section-content">
         {% for graduation in education.items %}
@@ -16,7 +16,7 @@
 
             <div class="upper-row">
                 <div class="major">{{ graduation.major }}</div>
-                <div class="degree"><i class="fa-solid fa-graduation-cap"></i> {{ graduation.degree }}</div>
+                <div class="degree"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> {{ graduation.degree }}</div>
             </div>
 
             {% if graduation.details %}

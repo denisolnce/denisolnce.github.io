@@ -1,9 +1,9 @@
 {% assign experiences = data.experiences %}
 {% if experiences and experiences.display %}
 <section class="experiences">
-    <div class="section-title">
+    <h2 class="section-title">
         {{ experiences.title }}
-    </div>
+    </h2>
 
     <div class="section-content">
         {% for experience in experiences.items %}
@@ -11,19 +11,26 @@
 
             <div class="upper-row">
                 <div class="company">
-                    <a href="https://{{ experience.website }}" target="_blank">
+                    {% if experience.website and experience.website != "" %}
+                    <a href="https://{{ experience.website }}" target="_blank" rel="noopener noreferrer">
                         {{ experience.company }}
                         {% if experience.tag %}
                         <small>[{{ experience.tag }}]</small>
                         {% endif %}
                     </a>
+                    {% else %}
+                    {{ experience.company }}
+                    {% if experience.tag %}
+                    <small>[{{ experience.tag }}]</small>
+                    {% endif %}
+                    {% endif %}
                 </div>
                 <div class="time">{{ experience.time }}</div>
             </div>
 
             <div class="upper-row">
                 <div class="role">{{ experience.role }}</div>
-                <div class="location"><i class="fa-solid fa-location-dot"></i> {{ experience.location }}</div>
+                <div class="location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ experience.location }}</div>
             </div>
 
             {% if experience.details %}

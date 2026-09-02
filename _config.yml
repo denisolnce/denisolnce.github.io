@@ -1,7 +1,29 @@
 # Welcome to Jekyll!
-title: DL Resume
+title: Deniss Solnce — Resume
 url: https://dennislapchenko.github.io
 baseurl:
+
+# Files that must not be published to the site.
+# NOTE: setting this replaces Jekyll's default exclude list, so the
+# Gemfile / node_modules / vendor entries below must stay.
+exclude:
+  - LICENSE
+  - Taskfile.yml
+  - docker-compose.yml
+  - Support
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Declared explicitly: without the `github-pages` gem, plugins are no longer
+# auto-enabled by it. The :jekyll_plugins bundler group still loads them, but
+# this keeps a plain `jekyll build` (no bundler) working too.
+plugins:
+  - jekyll-feed
 
 # Sass setting
 sass:

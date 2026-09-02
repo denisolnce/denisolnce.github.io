@@ -1,0 +1,50 @@
+# Local dev only. Driven by `task serve` / `task build` — see Taskfile.yml.
+#
+# Ruby is pinned deliberately: an unpinned image is what broke the old
+# `make serve` (image rolled to Ruby 4.0, Jekyll 3.9 could not load `csv`).
+# Bump this on purpose, not by surprise.
+#
+# `command` uses list form on purpose. A YAML folded block (>) keeps newlines
+# on more-indented lines, which silently split the shell command and dropped
+# --host, so the server bound to loopback inside the container and the port
+# mapping went nowhere.
+
+x-site: &site
+  image: ruby:3.4-bookworm
+  working_dir: /site
+  volumes:
+    - .:/site
+    - bundle:/usr/local/bundle
+  environment:
+    BUNDLE_PATH: /usr/local/bundle
+    LANG: C.UTF-8
+
+services:
+  serve:
+    <<: *site
+    ports:
+      - "4000:4000"
+      - "35729:35729" # livereload
+    command:
+      - bash
+      - -lc
+      # force_polling: bind-mount inotify events are unreliable on macOS/Windows.
+      - >-
+        bundle check || bundle install &&
+        bundle exec jekyll serve --host 0.0.0.0 --livereload --force_polling
+
+  build:
+    <<: *site
+    command:
+      - bash
+      - -lc
+      - >-
+        bundle check || bundle install &&
+        bundle exec jekyll build --trace
+
+  shell:
+    <<: *site
+    command: bash
+
+volumes:
+  bundle:

@@ -1,0 +1,42 @@
+// Single source of truth for design tokens.
+//
+// Every token carries !default so the entry stylesheet can override it, e.g.
+//   @use "default" with ($theme-color: #b0dd52);
+// which is how assets/css/main.scss injects site.theme_color from _config.yml.
+
+// Typography
+$base-font-family: "HelveticaNeu", sans-serif !default;
+
+// Display face for the name and section headings. Same stack as the flagship
+// serif on truetothebook. Iowan Old Style ships with macOS/iOS, Palatino is the
+// broader system fallback, Georgia the web-safe floor — so a PDF exported on a
+// Mac embeds Iowan Old Style, while other platforms degrade gracefully.
+$display-font-family: "Iowan Old Style", "Palatino", Georgia, serif !default;
+$display-font-weight: 650 !default;
+$display-letter-spacing: -0.015em !default;
+$base-font-size: 13px !default;
+$base-font-weight: 400 !default;
+
+// Derived sizes. Comments are the computed value at the default 13px base.
+$small-font-size: $base-font-size * 0.875 !default; // 11.375px
+$middle-font-size: $base-font-size * 1.125 !default; // 14.625px
+$large-font-size: $base-font-size * 1.25 !default; // 16.25px
+$subhuge-font-size: $base-font-size * 1.5 !default; // 19.5px
+$huge-font-size: $base-font-size * 2 !default; // 26px
+
+$base-line-height: 1.5 !default;
+
+// Layout
+$spacing-unit: 20px !default;
+$content-width: 1000px !default;
+
+// Colors
+$theme-color: #42a8c0 !default;
+$text-color: #333333 !default;
+$text-second-color: #3f4650 !default;
+$text-third-color: #97aac3 !default;
+$background-color: #55534d !default;
+$wrapper-color: #fffbf0 !default;
+$heart-color: #fb866a !default;
+$item-divider-color: #b6cacf !default;
+$job-title-color: #7b993b !default;

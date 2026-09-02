@@ -1,9 +1,9 @@
 {% assign projects = data.projects %}
 {% if projects and projects.display %}
 <section class="projects">
-    <div class="section-title">
+    <h2 class="section-title">
         {{ projects.title }}
-    </div>
+    </h2>
 
     <div class="section-content">
         {% if projects.intro %}
@@ -18,8 +18,8 @@
         <div class="item">
             {% if project.name %}
             <p class="project">
-                {% if project.link %}
-                <a href="{{ project.link }}" target="_blank">{{ project.name }}</a>
+                {% if project.link and project.link != "" %}
+                <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
                 {% else %}
                 {{ project.name }}
                 {% endif %}

@@ -1,0 +1,52 @@
+version: "3"
+
+vars:
+  DC: docker compose
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  serve:
+    desc: Serve the site at http://localhost:4000 with livereload
+    cmds:
+      - "{{.DC}} run --rm --service-ports serve"
+
+  build:
+    desc: Build the site into _site/
+    cmds:
+      - "{{.DC}} run --rm build"
+
+  install:
+    desc: Install gems into the cached bundle volume
+    cmds:
+      - "{{.DC}} run --rm shell bundle install"
+
+  lock:
+    desc: Resolve dependencies and rewrite Gemfile.lock
+    cmds:
+      - "{{.DC}} run --rm shell bundle lock --add-platform aarch64-linux x86_64-linux"
+
+  update:
+    desc: Update gems to the newest allowed versions and rewrite Gemfile.lock
+    cmds:
+      - "{{.DC}} run --rm shell bundle update"
+
+  shell:
+    desc: Open a shell in the build container
+    cmds:
+      - "{{.DC}} run --rm shell"
+
+  clean:
+    desc: Remove build output
+    cmds:
+      - rm -rf _site .jekyll-cache .jekyll-metadata
+
+  reset:
+    desc: Remove build output and the cached gem volume
+    deps: [clean]
+    cmds:
+      - "{{.DC}} down -v --remove-orphans"

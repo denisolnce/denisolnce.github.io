@@ -3,6 +3,8 @@
 
 @charset "utf-8";
 
-$theme-color: {{ site.theme_color | default: '#42A8C0' }};
-
-@import "default";
+// site.theme_color is injected by Liquid, so this configuration has to live in
+// the entry stylesheet — _sass partials are not Liquid-processed.
+@use "default" with (
+  $theme-color: {{ site.theme_color | default: '#42A8C0' }}
+);

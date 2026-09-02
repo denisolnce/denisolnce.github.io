@@ -1,16 +1,16 @@
 {% assign interests = data.interests %}
 {% if interests and interests.display %}
 <section class="interests">
-    <div class="section-title">
+    <h2 class="section-title">
         {{ interests.title }}
-    </div>
+    </h2>
 
     <div class="section-content">
         <ul class="list-unstyled">
             {% for interest in interests.items %}
 
-            {% if interest.link %}
-            <li><a href="{{ interest.link }}" target="_blank"><u>{{ interest.item }}</u></a></li>
+            {% if interest.link and interest.link != "" %}
+            <li><a href="{{ interest.link }}" target="_blank" rel="noopener noreferrer"><u>{{ interest.item }}</u></a></li>
             {% else %}
             <li>{{ interest.item }}</li>
             {% endif %}

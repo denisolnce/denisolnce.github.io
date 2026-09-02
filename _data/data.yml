@@ -1,19 +1,20 @@
 basic:
-  name: Deniss Lapcenko
-  title: Software, Cloud and Site Reliability Engineer
+  name: Deniss Solnce
+  title: Software and Platform Engineer
   avatar:
     display: true
     path: profile.png
 
 contact:
-  location: Riga, Latvia
-  email: deniss.lapcenko@gmail.com
+  location: EU Nomad (base @ Riga, Latvia)
+  email: deniss.solnce@gmail.com
   phone: +371 25953702
-  website: /garden-of-wiki
+  website: https://gardenofatlantis.com
   whatsapp:
   telegram: zhora_velosiped
   github: dennislapchenko
-  linkedin:
+  # Handle only — contact.html prefixes https://linkedin.com/in/
+  linkedin: dsolnce
   twitter:
   stackoverflow:
 
@@ -21,29 +22,34 @@ profile:
   display: true
   title:
   details: |
-    Cloud infrastructure and application development, configuration, deployment, testing and monitoring.
-    Started as e-commerce backend engineer. Later knighted in infrastructure as code, flying Kubernetes ships, tinkering CICD pipelines, QAOps, monitoring, reporting and alerting.
-    Favourite thing to do: get drowned in Terraform.
-    <br> Smooth automation with single sources of truth (git) gets my juices flowing! Obsess over workflow improving hotkeys/scripts/automations/applications.
-    <br> Experience in game development (MMORPG) and Digital Signal Processing (audio) from university days in Bath, UK.
-    <br> Not afraid of firmly voicing an opinion, not shy in giving complements or feeding back caring constructive criticism.
-    Enjoy environments filled with witty humour.
+    Building since 2016 — backend initially, infrastructure-first since 2019.
+    <br> I run multi-cloud Kubernetes platforms across GCP, AWS and bare metal. Lead migrations off hyperscalers when the economics stop making sense.
+    <br> I move through large systems fast because I "industrialised" agent tooling: Claude Code skills, subagent workflows and LLM-assisted automation is what helps to keep the pace and eliminate human error.
+    <br> Excel at Infrastructure as Code module design and self-service provisioning.
+    <br> Obsess over workflow improving hotkeys/scripts/automations/applications.
+    <br> Enjoy environments filled with witty humour.
     Source inspiration from art forms, cultural human interactions and internal mind-body-spirit sciences.
 
 experiences:
   display: true
   title: Experience
+  # Removed 2026-08: Codemasters Ltd (2-month 2015 audio internship) — eleven years
+  # old and the longest-standing space cost. Game-dev background still shows via the
+  # MMORPG project. Restore from git history if a role ever wants it.
   items:
-    - company: OnAir Entertainment
-      role: DevOps Engineer
+    - company: RealTime SIA
+      role: Senior Platform Engineer
       website: ""
       time: 2023.05 - present
-      tag:
+      tag: full-time, later part-time
       location: Riga, Latvia
       details: |
-        Multi-cloud infrastructure provisioning, refactoring and maintenance.
-        Kubernetes administration.
-        CICD pipelines for business/infra applications and infrastructure code.
+        - Drove migration of 6 Kubernetes clusters from GCP GKE to Hetzner and IONOS RKE2.
+        - Operate 20 Kubernetes clusters across GKE, EKS and RKE2 on multiple providers: hundreds of nodes, with CI/CD clusters on heavy autoscale.
+        - Main author of Terraform/Terragrunt configurations. Dozens of modules, elegant nested variable, secret and provider configurations.
+        - Built a novel rendered-manifest CI/CD implementation for Kubernetes delivery. Replacing workload definition re-definition across all clusters.
+        - Built permission-elevation applications so ops self-serve access instead of raising tickets.
+        - Authored Claude Code agent skills that carry out complex cluster migrations and multi-scope aware operations.
       tech:
         - Terraform+Terragrunt
         - GCP/AWS/Hetzner
@@ -54,13 +60,14 @@ experiences:
     - company: Octostrategy
       role: Cloud Architect
       website: ""
-      time: 2022.05 - xxx
-      tag:
+      time: 2022.05 - 2025.07
+      tag: consulting
       location: Riga, Latvia
       details: |
-        Cloud migration of numerous platforms. Server deployment, configuration, monitoring and alerting.
-        Network securing and vulnerable application network access fine tuning.
-        Cyberattack analysis and prevention.
+        - Cloud migration of numerous platforms.
+        - Server deployment, configuration, monitoring and alerting.
+        - Network securing and vulnerable application network access fine tuning.
+        - Cyberattack analysis and prevention.
       tech:
         - Terraform+Terragrunt
         - Ansible
@@ -79,8 +86,8 @@ experiences:
       tag:
       location: Remote
       details: |
-        Automating legacy approaches throughout infrastructure and team management (IaC for GitHub IAM, GCP IAM).
-        Migrating/rebuilding Kubernetes clusters, VPCs, VPNs and other auxiliary infrastructure.
+        - Automating legacy approaches throughout infrastructure and team management (IaC for GitHub IAM, GCP IAM).
+        - Migrating/rebuilding Kubernetes clusters, VPCs, VPNs and other auxiliary infrastructure.
       tech:
         - Terraform
         - Kubernetes
@@ -97,10 +104,10 @@ experiences:
       tag:
       location: Riga, Latvia
       details: |
-        Full ownership of cloud resources, Kubernetes clusters and CICD pipelines.
-        Business and system application development, configuration, testing, deployment and monitoring.
-        Building in-house tools for documentation and report generation, data analysis, and continuous CLI workflow improvements.
-        Continuous improvements via GitOps dependency and template updates.
+        - Full ownership of cloud resources, Kubernetes clusters and CICD pipelines.
+        - Business and system application development, configuration, testing, deployment and monitoring.
+        - Building in-house tools for documentation and report generation, data analysis, and continuous CLI workflow improvements.
+        - Continuous improvements via GitOps dependency and template updates.
       tech:
         - Terraform+Terragrunt
         - Kubernetes, Helm
@@ -119,10 +126,10 @@ experiences:
       tag:
       location: London, UK
       details: |
-        Developing, maintaining, testing and documenting RESTful API's for e-commerce and telecom platforms for clients, and in-house tools. 
-        Actively communicating with colleagues across teams and 3rd parties. Planning, researching, validating technical requirements & specifications. 
-        Later writing infrastructure as code, managing kubernetes clusters and application deployment resources.
-        <br> Clients: Audi, Halfords, Wolseley. T-Mobile US, Circle Media Inc
+        - Developing, maintaining, testing and documenting RESTful APIs for e-commerce and telecom platforms for clients, and in-house tools.
+        - Actively communicating with colleagues across teams and 3rd parties. Planning, researching, validating technical requirements & specifications.
+        - Later writing infrastructure as code, managing kubernetes clusters and application deployment resources.
+        - Clients: Audi, Halfords, Wolseley. T-Mobile US, Circle Media Inc
       tech:
         - Java
         - Golang
@@ -135,79 +142,81 @@ experiences:
         - Docker
         - ELK
 
-    - company: Codemasters Ltd
-      website: "www.codemasters.com"
-      role: Audio Programmer & Sound Designer
-      time: 2015.06 - 2015.07
-      tag: internship
-      location: London, UK
-      details: |
-        Internship in a respectable UK game studio. Gained insights on how game production pipelines, huge code bases and version control works. Wrote an audio processing feature for DiRT Rally and did voice-over for Russian localization. Designed sound assets for Micromachines.
-      tech:
-        - C++
-        - Perforce
-        - WWise
-        - Sound Forge
-        - Sony Vegas
-        - in-house software
-
 projects:
   display: true
   title: Notable Projects
   intro: ""
+  # Removed the 2015 "Audio granular re-synthesis" university entry to make room
+  # for current work — restore from git history if you want it back.
+  # Framing choice: these entries lead with architecture and engineering decisions.
+  # The AI-collaboration angle is deliberately NOT claimed here — it lives in the
+  # Skills group and the RealTime agent-skills bullet, and is left for conversation.
   items:
-    - name: Audio granular re-synthesis and resampling @ University.
-      link: https://github.com/dennislapchenko/srxvert
+    - name: "Gaia's Choice — eco-living platform (open source)"
+      link: https://github.com/dennislapchenko/gaias-choice
       details: |
-        Bachelor's final year module, Audio Software Development: developed an audio file processor with unique granular re-synthesis algorithm. Using JUCE, a high level C++ framework. Application takes sample files and procedurally generates any number of audio files with various transforming settings. Up-sampling and down-sampling algorithms.
-    - name: Multiplayer Online Role Playing Game @ University.
+        Open-source platform. React 18 / TypeScript SPA on Vite with an optional Go API sidecar for progressive enhancement, Markdown+YAML content compiled to routes at build time, fully containerised toolchain, almost 0 npm dependencies, nginx production image, GithuPages deploys.
+    - name: "truetothebook.com — faithful book translator"
+      link: https://truetothebook.com
+      details: |
+        Multi-stage translation pipeline for epub/mobi/fb2/txt/pdf, designed so every passage is re-checked by an independent verification pass before it is accepted. Python, resumable job state, pluggable inference engines (hosted or local models), background worker, Postgres migrations, doco-cd deployment.
+    - name: "Multiplayer Online RPG @ University"
       link: https://github.com/dennislapchenko/DARP_Server
       details: |
-        Bachelor's thesis: built a MMORPG game prototype. Back-end solution with Photon Server framework (C#) and MySQL database. Front-end in Unity3D. Photoshop for assets. Deployed to multiclouts, server to AWS EC2, database to DigitalOcean. Tested the game on iPad and iPhone devices.
+        Bachelor's thesis: MMORPG prototype. Photon Server backend (C#) with MySQL, Unity3D client, deployed across AWS EC2 and DigitalOcean, tested on iPad and iPhone.
 
 skills:
   display: true
   title: Skills
+  # Competence domains, not vendor buckets. Every entry is backed by real work —
+  # confirmed with Deniss Aug 2026. Deliberately ABSENT: SLOs / error budgets
+  # (never done — do not add), FinOps/cost-optimisation (he was not the driver),
+  # service mesh, tracing/OTel, policy-as-code. Do not pad these back in.
   items:
-    - name: Operations
+    - name: Cloud & IaC
       skills:
-        - Terraform(-grunt)
-        - GCP, AWS, Hetzner
-        - Kubernetes, Helm, Docker
-        - VPC design
-        - 'GitOPs: ArgoCD, FluxCD'
+        - GCP, AWS
+        - Hetzner, IONOS
+        - Terraform / Terragrunt
         - Atlantis
         - Ansible
-        - "*nix system ops"
-        - Bash
-        - Nginx, SSL
-        - Grafana, VictoriaMetrics, Loki
-        - Renovate
-        - Postgres, MySQL, Redis
-        - Github, Gitlab, Bitbucket
-        - Wireguard VPN
-    - name: Development
+        - Cloud migration & repatriation
+    - name: Kubernetes & Delivery
+      skills:
+        - Kubernetes (GKE, EKS, RKE2)
+        - Helm, Docker
+        - ArgoCD / FluxCD
+        - Rendered-manifest CI/CD
+        - GitLab CI (self-hosted)
+        - GitHub Actions
+        - Cluster autoscaling
+    - name: Observability & Reliability
+      skills:
+        - VictoriaMetrics, Prometheus
+        - Grafana, Loki
+        - Alerting & dashboards
+        - On-call ops rotation
+    - name: Security & Networking
+      skills:
+        - SOPS (ArgoCD, Terragrunt)
+        - External Secrets Operator
+        - GCP / AWS secret managers
+        - IAM as code (GCP, GitHub)
+        - Nginx, Cloudflare, load balancing
+        - WireGuard, TLS
+        - Attack analysis & mitigation
+    - name: AI & Agentic Engineering
+      skills:
+        - Claude Code (agent skills, subagents)
+        - Agent-assisted cluster migrations
+        - Multi-agent workflows
+    - name: Languages & Data
       skills:
         - Go
         - Python
-        - Java
-        - Git
-        - Javascript
-        - 12 Factor App
-    - name: Media
-      skills:
-        - Ableton Live
-        - Cinema4D
-        - PureData
-        - MaxMSP
-        - Unity3D
-  # levels:
-  #   - name: Skill A
-  #     level: 90
-  #   - name: Skill B
-  #     level: 80
-  #   - name: Skill C
-  #     level: 70
+        - Bash
+        - Linux
+        - PostgreSQL, MySQL, Redis
 
 education:
   display: true
@@ -237,7 +246,7 @@ certificates:
       details: ""
 
 languages:
-  display: false
+  display: true
   title: Languages
   items:
     - idiom: English
