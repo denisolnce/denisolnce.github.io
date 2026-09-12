@@ -22,9 +22,8 @@ profile:
   display: true
   title:
   details: |
-    Building since 2016 — backend initially, infrastructure-first since 2019.
-    <br> I run multi-cloud Kubernetes platforms across GCP, AWS and bare metal. Lead migrations off hyperscalers when the economics stop making sense.
-    <br> I move through large systems fast because I "industrialised" agent tooling: Claude Code skills, subagent workflows and LLM-assisted automation is what helps to keep the pace and eliminate human error.
+    Building since 2016 — backend initially, infrastructure predominantly since 2019.
+    <br> I run multi-cloud Kubernetes platforms across cloud providers. As well as fleets of VMs for simpler applications.
     <br> Excel at Infrastructure as Code module design and self-service provisioning.
     <br> Obsess over workflow improving hotkeys/scripts/automations/applications.
     <br> Enjoy environments filled with witty humour.
@@ -45,10 +44,10 @@ experiences:
       location: Riga, Latvia
       details: |
         - Drove migration of 6 Kubernetes clusters from GCP GKE to Hetzner and IONOS RKE2.
-        - Operate 20 Kubernetes clusters across GKE, EKS and RKE2 on multiple providers: hundreds of nodes, with CI/CD clusters on heavy autoscale.
+        - Operate 20 Kubernetes clusters across GKE, EKS and RKE2 on multiple providers.
         - Main author of Terraform/Terragrunt configurations. Dozens of modules, elegant nested variable, secret and provider configurations.
-        - Built a novel rendered-manifest CI/CD implementation for Kubernetes delivery. Replacing workload definition re-definition across all clusters.
-        - Built permission-elevation applications so ops self-serve access instead of raising tickets.
+        - Co-authored a novel rendered-manifest CI/CD implementation for Kubernetes delivery. Replacing workload re-definition across all clusters.
+        - Continuously wrote ops tooling for improved performance and safety.
         - Authored Claude Code agent skills that carry out complex cluster migrations and multi-scope aware operations.
       tech:
         - Terraform+Terragrunt
@@ -155,11 +154,11 @@ projects:
     - name: "Gaia's Choice — eco-living platform (open source)"
       link: https://github.com/dennislapchenko/gaias-choice
       details: |
-        Open-source platform. React 18 / TypeScript SPA on Vite with an optional Go API sidecar for progressive enhancement, Markdown+YAML content compiled to routes at build time, fully containerised toolchain, almost 0 npm dependencies, nginx production image, GithuPages deploys.
+        Open-source platform. React 18 / TypeScript SPA on Vite with an optional Go API sidecar for progressive enhancement, Markdown+YAML content compiled to routes at build time, fully containerised toolchain, almost 0 npm dependencies.
     - name: "truetothebook.com — faithful book translator"
       link: https://truetothebook.com
       details: |
-        Multi-stage translation pipeline for epub/mobi/fb2/txt/pdf, designed so every passage is re-checked by an independent verification pass before it is accepted. Python, resumable job state, pluggable inference engines (hosted or local models), background worker, Postgres migrations, doco-cd deployment.
+        Multi-stage translation pipeline for ebooks. Python, resumable job state, pluggable inference engines (hosted or local models), background workers, doco-cd deployment.
     - name: "Multiplayer Online RPG @ University"
       link: https://github.com/dennislapchenko/DARP_Server
       details: |
