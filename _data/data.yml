@@ -12,7 +12,7 @@ contact:
   website: https://gardenofatlantis.com
   whatsapp:
   telegram: zhora_velosiped
-  github: dennislapchenko
+  github: denisolnce
   # Handle only — contact.html prefixes https://linkedin.com/in/
   linkedin: dsolnce
   twitter:
@@ -152,7 +152,7 @@ projects:
   # Skills group and the RealTime agent-skills bullet, and is left for conversation.
   items:
     - name: "Gaia's Choice — eco-living platform (open source)"
-      link: https://github.com/dennislapchenko/gaias-choice
+      link: https://github.com/denisolnce/gaias-choice
       details: |
         Open-source platform. React 18 / TypeScript SPA on Vite with an optional Go API sidecar for progressive enhancement, Markdown+YAML content compiled to routes at build time, fully containerised toolchain, almost 0 npm dependencies.
     - name: "truetothebook.com — faithful book translator"
@@ -160,7 +160,7 @@ projects:
       details: |
         Multi-stage translation pipeline for ebooks. Python, resumable job state, pluggable inference engines (hosted or local models), background workers, doco-cd deployment.
     - name: "Multiplayer Online RPG @ University"
-      link: https://github.com/dennislapchenko/DARP_Server
+      link: https://github.com/denisolnce/DARP_Server
       details: |
         Bachelor's thesis: MMORPG prototype. Photon Server backend (C#) with MySQL, Unity3D client, deployed across AWS EC2 and DigitalOcean, tested on iPad and iPhone.
 
