@@ -151,10 +151,10 @@ projects:
   # The AI-collaboration angle is deliberately NOT claimed here — it lives in the
   # Skills group and the RealTime agent-skills bullet, and is left for conversation.
   items:
-    - name: "Gaia's Choice — eco-living platform (open source)"
-      link: https://github.com/denisolnce/gaias-choice
+    - name: "portapagi.com - community living management portal"
+      link: https://portapagi.com
       details: |
-        Open-source platform. React 18 / TypeScript SPA on Vite with an optional Go API sidecar for progressive enhancement, Markdown+YAML content compiled to routes at build time, fully containerised toolchain, almost 0 npm dependencies.
+        Open-source platform for various activities a community or a village needs. Calendar, board, projects, tools, orders, duties, contacts etc.
     - name: "truetothebook.com — faithful book translator"
       link: https://truetothebook.com
       details: |
